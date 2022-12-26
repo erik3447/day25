@@ -1,13 +1,21 @@
 import pandas
 
-pd = pandas.read_csv("weather_data.csv")
+pd = pandas.read_csv("Squirrel.csv")
+
+grey = len(pd[pd["Primary Fur Color"] == "Gray"])
+
+red = len(pd[pd["Primary Fur Color"] == "Cinnamon"])
+
+black = len(pd[pd["Primary Fur Color"] == "Black"])
+
+print(grey)
+print(red)
+print(black)
 
 
-temp_series = pd["temp"]
+squirrel_dict = {
+    "Fur Color": ["grey", "red", "black"],
+    "Count": [grey, red, black],
+}
 
-temp_list = []
-
-for degress in temp_series:
-    temp_list.append(degress)
-
-print(temp_list)
+data_to_excel = pandas.DataFrame(squirrel_dict).to_csv("squirrel_dict.csv")
